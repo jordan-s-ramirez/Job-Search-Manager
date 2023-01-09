@@ -25,6 +25,11 @@ export default function ComplexCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [resize, setResize] = React.useState([12,6,3]);
   
+  React.useEffect(()=>{
+    setExpanded(false)
+    setResize([12,6,3])
+  },[props.myCompany])
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
     if(!expanded) {
@@ -52,8 +57,6 @@ export default function ComplexCard(props) {
               <a href={props.myURL}>Visit | {props.myCompany}</a>
             </li>
           </ul>  
-          {/* <Typography variant="body2" color="text.secondary">
-          </Typography> */}
         </CardContent>
         <CardActions disableSpacing>
           <ExpandMore
