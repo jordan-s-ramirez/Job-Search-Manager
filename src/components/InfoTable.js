@@ -96,7 +96,7 @@ export default function InfoTable(props){
     var tabData = getItemSet(props.data)
     setJobType(tabData[0])
     setLocation(tabData[1])
-  },[])
+  },[props.data])
 
   return(
     <Box sx={{flexGrow: 1 }}>

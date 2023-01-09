@@ -45,19 +45,30 @@ export default function DisplayData(props) {
       <Grid item container spacing={2}>
         {currPageData.map((object, index) => {
           return(
-            <Grid key={index} item xs={12} sm={6} md={3}>
-              <ComplexCard
-                key={index}
-                myCompany={object.Company}
-                myTitle={object.Title}
-                myJobType={object["Job Type"]}
-                myLoc={object.Location}
-                mySalary={object.Salary !== "" ? "$"+object.Salary+"k": null} 
-                myURL={object["Job URL"]}
-                myDesc={object["Job Description"]}
-                myStatus={object["Application Status\r"]}
-              />
-            </Grid>
+            // <Grid key={index} item xs={12} sm={6} md={3}>
+            //   <ComplexCard
+            //     key={index}
+            //     myCompany={object.Company}
+            //     myTitle={object.Title}
+            //     myJobType={object["Job Type"]}
+            //     myLoc={object.Location}
+            //     mySalary={object.Salary !== "" ? "$"+object.Salary+"k": null} 
+            //     myURL={object["Job URL"]}
+            //     myDesc={object["Job Description"]}
+            //     myStatus={object["Application Status\r"]}
+            //   />
+            // </Grid>
+            <ComplexCard
+              key={index}
+              myCompany={object.Company}
+              myTitle={object.Title}
+              myJobType={object["Job Type"]}
+              myLoc={object.Location}
+              mySalary={object.Salary !== "" ? "$"+object.Salary+"k": null} 
+              myURL={object["Job URL"]}
+              myDesc={object["Job Description"]}
+              myStatus={object["Application Status\r"]}
+            />
           )
         })}
         <Grid item container spacing={2} direction="column" alignItems="center" justifyContent="center">

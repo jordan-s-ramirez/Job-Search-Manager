@@ -8,6 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Grid from '@mui/material/Grid';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -22,48 +23,57 @@ const ExpandMore = styled((props) => {
 
 export default function ComplexCard(props) {
   const [expanded, setExpanded] = React.useState(false);
-
+  const [resize, setResize] = React.useState([12,6,3]);
+  
   const handleExpandClick = () => {
     setExpanded(!expanded);
+    if(!expanded) {
+      setResize([12,12,12]);
+    }
+    else {
+      setResize([12,6,3]);
+    }
   };
 
   return (
-    <Card>
-      <CardHeader
-        title={props.myTitle}
-        subheader={props.myCompany + " | " + props.myLoc}
-      />
-      <CardContent style={{textAlign:'left'}}>
-        <ul>
-          <li>Job Type: {props.myJobType}</li>
-          <li>Salary: {props.mySalary}</li>
-          <li>Location: {props.myLoc}</li>
-          <li>Status: {props.myStatus}</li>
-          <li>URL: 
-            <a href={props.myURL}>Visit | {props.myCompany}</a>
-          </li>
-        </ul>  
-        {/* <Typography variant="body2" color="text.secondary">
-        </Typography> */}
-      </CardContent>
-      <CardActions disableSpacing>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+    <Grid item xs={resize[0]} sm={resize[1]} md={resize[2]}>
+      <Card>
+        <CardHeader
+          title={props.myTitle}
+          subheader={props.myCompany + " | " + props.myLoc}
+        />
         <CardContent style={{textAlign:'left'}}>
-          <Typography variant="h6"><b>Description:</b></Typography>
-          <Typography paragraph>
-            {props.myDesc}
-          </Typography>
+          <ul>
+            <li>Job Type: {props.myJobType}</li>
+            <li>Salary: {props.mySalary}</li>
+            <li>Location: {props.myLoc}</li>
+            <li>Status: {props.myStatus}</li>
+            <li>URL: 
+              <a href={props.myURL}>Visit | {props.myCompany}</a>
+            </li>
+          </ul>  
+          {/* <Typography variant="body2" color="text.secondary">
+          </Typography> */}
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent style={{textAlign:'left'}}>
+            <Typography variant="h6"><b>Description:</b></Typography>
+            <Typography paragraph>
+              {props.myDesc}
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </Grid>
   );
 }
