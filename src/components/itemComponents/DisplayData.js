@@ -31,6 +31,7 @@ export default function DisplayData(props) {
     }
     
     // Set Data
+    console.log("ParsedData", parsedData)
     setData(parsedData)
     if(parsedData.length !== 0) {
       setCurrPageData(parsedData[0])
@@ -61,7 +62,7 @@ export default function DisplayData(props) {
         <Grid item container spacing={2} direction="column" alignItems="center" justifyContent="center">
           <Grid item xs={12} sm={12} md={12}>
             <Pagination 
-              count={Math.floor(props.data.length / 8) + 1} 
+              count={Math.ceil(props.data.length / 8)} 
               page={currPage} 
               variant="outlined" 
               shape="rounded" 

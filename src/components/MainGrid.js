@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import InfoTable from './InfoTable';
+import Graphs from './Graphs';
+import AddData from './AddData';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,7 +20,6 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function MainGrid() {
   const [hasData, setHasData] = useState(false)
   const [array, setArray] = useState([]);
-
   const fileReader = new FileReader();
 
   const tsvFileToArray = string => {
@@ -53,14 +54,21 @@ export default function MainGrid() {
     }
   }
 
+  const handleAddData = (newItem) => {
+    var arr = Array.from(array)
+    arr.push(newItem)
+    console.log("print", array)
+    setArray(arr)
+  }
+
   // Check is user already has data
   useEffect(() => {
     var allData = localStorage.getItem('jobHuntData')
-    if (allData !== null) {
+    if (allData !== null && array.length === 0) {
       // Parse Inital Data
       allData = JSON.parse(allData)
       allData = allData.data
-
+      console.log(allData)
       setArray(allData)
       setHasData(true)
     }
@@ -72,11 +80,15 @@ export default function MainGrid() {
         <h1>Job Search Manager</h1>
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={12} style={{marginBottom:'2vh'}}>
+        <Grid item xs={12} md={12} style={{marginBottom:'1vh'}}>
           <Item>
             {hasData ? 
             (
-              <InfoTable data={array}/>
+              <div>
+                <InfoTable data={array}/>
+                <h2>Add New Job</h2>
+                <AddData toAdd={(e) => {handleAddData(e)}}/>
+              </div>
             ):
             (
               <div>
@@ -93,6 +105,17 @@ export default function MainGrid() {
             }
           </Item>
         </Grid>
+        {hasData ?
+        (
+          <Grid item xs={12} md={12} lg={12} style={{marginBottom:'2vh'}}>
+            <Item>
+              <Graphs data={array}/>
+            </Item>
+          </Grid>
+        )
+        :
+        (null)
+        }
       </Grid>
     </Box>
   );
