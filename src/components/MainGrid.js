@@ -64,13 +64,17 @@ export default function MainGrid() {
     setArray(arr)
 
     // Save Data
-    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
+    localStorage.setItem("jobHuntData", JSON.stringify({"data": arr}));
   }
 
   const handleUpdate = (newValue, index, type) => {
+    // Update Values
     var arr = Array.from(array)
     arr[index][type] = newValue
-    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
+    setArray(arr)
+    
+    // Save Data
+    localStorage.setItem("jobHuntData", JSON.stringify({"data": arr}));
   }
 
   // Handles data remove also saves: NOTE can save if index is -1
@@ -84,7 +88,7 @@ export default function MainGrid() {
         arr[i]["index"] = i
       }
     }
-    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
+    localStorage.setItem("jobHuntData", JSON.stringify({"data": arr}));
     setArray(arr)
   }
 

@@ -28,10 +28,14 @@ export default function ComplexCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [resize, setResize] = React.useState([12,6,3]);
 
+  const [description, setDescription] = React.useState(props.singleData["Job Description"])
+
   React.useEffect(()=>{
     setExpanded(false)
     setResize([12,6,3])
-  },[props.myCompany, props.myJobType, props.mySalary])
+    
+    setDescription(props.singleData["Job Description"])
+  },[props.singleData])
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -85,7 +89,7 @@ export default function ComplexCard(props) {
           <CardContent style={{textAlign:'left'}}>
             <Typography variant="h6"><b>Description:</b></Typography>
             <Typography paragraph>
-              <EditDescription name={props.myDesc} updateDataFunc={(e)=>props.updateDataFunc(e)}/>
+              <EditDescription type="Job Description" index={props.singleData.index} name={description} updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
             </Typography>
           </CardContent>
         </Collapse>

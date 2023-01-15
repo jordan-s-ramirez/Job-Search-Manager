@@ -9,6 +9,7 @@ export default function EditDescription(props) {
 
   useEffect(()=>{
     setEdit(false)
+    setName(props.name)
   },[props.name])
 
   // Change with text change
@@ -18,19 +19,16 @@ export default function EditDescription(props) {
 
   // when new input is updated
   const handleOnSubmit = (val) => {
-    if(val.key === "Enter" || val.key === "Tab" || val.key === "Escape")
+    if(val.key === "Enter" || val.key === "Tab" || val.key === "Escape") {
       setEdit(false)
+      props.updateDataFunc(val, props.index, props.type)
+    }
   }
 
   return(
     <div>
       {edit ?
         (
-          // <textarea type="text" value={name} 
-          //   onChange={(e)=>{handleOnClick(e)}}
-          //   onKeyDown={(e)=>{handleOnSubmit(e)}}
-          //   style={{borderRadius: '10px'}}
-          // />
           <TextareaAutosize style={{width: "100%", borderRadius: '10px'}}
             onChange={(e)=>{handleOnClick(e)}}
             onKeyDown={(e)=>{handleOnSubmit(e)}}
@@ -40,7 +38,7 @@ export default function EditDescription(props) {
       :
       (
         <p onClick={()=>{setEdit(!edit)}}>
-          {props.name}
+          {name}
         </p>
       )}
     </div>
