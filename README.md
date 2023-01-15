@@ -4,10 +4,10 @@ Introducing the Job Search Manager, a cutting-edge web application built using R
 One of the key features of this app is its utilization of Material-UI design principles. This allows for a sleek and modern look and feel, while also ensuring a consistent user experience across all devices.
 
 ## Features
-* Search for stock by name or TINKER
-* Display RSI data for specific stock
-* Save data and clear searches
-* Clear saved data
+* Reads data from TSV file, which user uploads
+* Utilizing Chart.js allows for easy creation of visually appealing and informative charts to analyze job search data
+* Save and delete entries
+* Filter data by job location and job type
 
 ## How to use
 
