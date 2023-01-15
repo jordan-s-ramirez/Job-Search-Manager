@@ -34,7 +34,6 @@ export default function DisplayData(props) {
     console.log("ParsedData", parsedData)
     setData(parsedData)
     if(parsedData.length !== 0) {
-      console.log("currpage",currPage)
       setCurrPageData(parsedData[currPage - 1])
     }
     else {
@@ -49,6 +48,8 @@ export default function DisplayData(props) {
           return(
             <ComplexCard
               key={index}
+              myIndex={object.index}
+              remDataFunc={(e)=>props.remDataFunc(e)}
               myCompany={object.Company}
               myTitle={object.Title}
               myJobType={object["Job Type"]}

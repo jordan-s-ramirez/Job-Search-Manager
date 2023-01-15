@@ -55,9 +55,39 @@ export default function MainGrid() {
   }
 
   const handleAddData = (newItem) => {
+    // Update Data
     var arr = Array.from(array)
+    newItem["index"] = arr.length
     arr.push(newItem)
-    console.log("print", array)
+    setArray(arr)
+
+    // Save Data
+    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
+  }
+
+  const handleRemoveData = (oldItemIndex) => {
+    // // Make sure user wants to delete this item
+    // var userResp = window.confirm("Are you use you want to remove " + array[oldItemIndex].Title + " - " + array[oldItemIndex].Company)
+    // // Remove item
+    // if(userResp) {
+    //   var arr = Array.from(array)
+    //   if (oldItemIndex > -1) {
+    //     arr.splice(oldItemIndex, 1);
+    //   }
+
+    //   setArray(arr)
+    // }
+
+    // Remove Item
+    var arr = Array.from(array)
+    if (oldItemIndex > -1) {
+      arr.splice(oldItemIndex, 1);
+    }
+    // Reorder array
+    for(var i = oldItemIndex; i < arr.length; i++) {
+      arr[i]["index"] = i
+    }
+    console.log("remove", oldItemIndex)
     setArray(arr)
   }
 
@@ -68,7 +98,11 @@ export default function MainGrid() {
       // Parse Inital Data
       allData = JSON.parse(allData)
       allData = allData.data
-      console.log(allData)
+      
+      for(var i = 0; i < allData.length; i++) {
+        allData[i]["index"] = i
+      }
+
       setArray(allData)
       setHasData(true)
     }
@@ -85,7 +119,7 @@ export default function MainGrid() {
             {hasData ? 
             (
               <div>
-                <InfoTable data={array}/>
+                <InfoTable data={array} remDataFunc={(e)=>handleRemoveData(e)}/>
                 <h2>Add New Job</h2>
                 <AddData toAdd={(e) => {handleAddData(e)}}/>
               </div>

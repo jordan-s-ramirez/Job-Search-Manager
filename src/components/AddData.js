@@ -53,6 +53,14 @@ export default function AddData(props) {
       item["Salary"] = salary
       item["Title"] = title
       props.toAdd(item)
+      setRes("Submitted!")
+      setCompany("")
+      setJobDescription("")
+      setJobType("")
+      setLocation("")
+      setTitle("")
+      setUrl("")
+      setSalary("")
     }
     else {
       setRes(resString)

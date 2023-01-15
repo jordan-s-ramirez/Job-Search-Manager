@@ -27,9 +27,9 @@ function filterData(data, type, items) {
   if(items.length === 0) {
     return data
   }
-  else {
-    console.log(type, items)
-  }
+  // else {
+  //   console.log(type, items)
+  // }
   var filData = []
   items.map((item) => {
     data.map((obj, index) => {
@@ -39,7 +39,7 @@ function filterData(data, type, items) {
     });
   })
   // console.log(items)
-  console.log("Single Filtered",filData)
+  // console.log("Single Filtered",filData)
   return filData
 }
 
@@ -54,20 +54,20 @@ export default function InfoTable(props){
 
   function initalFilter(array, type) {
     var mainData = props.data
-    console.log("Type", type)
+    // console.log("Type", type)
     // Based On Group
     if(type === "Job Type")
       mainData = filterData(mainData, type, array)
     else
       mainData = filterData(mainData, "Job Type", jobTypeFilter)
     if(type === "Location") {
-      console.log("Location Triggered", mainData, array)
+      // console.log("Location Triggered", mainData, array)
       mainData = filterData(mainData, type, array)
     }
     else
       mainData = filterData(mainData, "Location", locationFilter)
 
-    console.log("Filter - TableInfo", mainData)
+    // console.log("Filter - TableInfo", mainData)
     setDataFiltered(mainData)
   }
 
@@ -97,7 +97,7 @@ export default function InfoTable(props){
     setJobType(tabData[0])
     setLocation(tabData[1])
     initalFilter(props.data, null)
-    
+
   },[props.data])
 
   return(
@@ -148,7 +148,7 @@ export default function InfoTable(props){
           </Grid>
         </Grid>
         <Grid item xs={12} s={12} md={12} style={{marginTop:"2vh"}}>
-          <DisplayData data={dataFiltered}/>
+          <DisplayData data={dataFiltered} remDataFunc={(e)=>props.remDataFunc(e)}/>
         </Grid>
       </Grid>
     </Box>

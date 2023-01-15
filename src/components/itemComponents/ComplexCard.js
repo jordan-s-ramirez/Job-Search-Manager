@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -40,6 +41,10 @@ export default function ComplexCard(props) {
     }
   };
 
+  const handleDelete = () => {
+    props.remDataFunc(props.myIndex)
+  }
+
   return (
     <Grid item xs={resize[0]} sm={resize[1]} md={resize[2]}>
       <Card>
@@ -59,6 +64,9 @@ export default function ComplexCard(props) {
           </ul>  
         </CardContent>
         <CardActions disableSpacing>
+          <IconButton onClick={handleDelete} aria-label="add to favorites">
+            <RemoveCircleIcon />
+          </IconButton>
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
