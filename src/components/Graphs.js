@@ -97,7 +97,7 @@ export default function Graphs(props) {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <div style={{alignItems:'center'}}>
+            <div style={{alignItems:'center', width:'100%'}}>
               <DoughnutGraph data={currData}/>
             </div>
           </TabPanel>

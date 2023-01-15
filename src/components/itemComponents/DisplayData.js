@@ -34,7 +34,8 @@ export default function DisplayData(props) {
     console.log("ParsedData", parsedData)
     setData(parsedData)
     if(parsedData.length !== 0) {
-      setCurrPageData(parsedData[0])
+      console.log("currpage",currPage)
+      setCurrPageData(parsedData[currPage - 1])
     }
     else {
       setCurrPageData([])
