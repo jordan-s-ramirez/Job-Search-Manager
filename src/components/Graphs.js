@@ -9,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import BarGraph from "./itemComponents/Graphs/BarGraph";
+import BarGraph from "./itemComponents/Graphs/BarGraph";
 
 function filterData(data, type) {
   var filterData = {}
@@ -93,7 +93,7 @@ export default function Graphs(props) {
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="Doughnut" value="1" />
-              {/* <Tab label="Bar" value="2" /> */}
+              <Tab label="Bar" value="2" />
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -101,11 +101,11 @@ export default function Graphs(props) {
               <DoughnutGraph data={currData}/>
             </div>
           </TabPanel>
-          {/* <TabPanel value="2">
+          <TabPanel value="2">
             <div style={{alignItems:'center'}}>
               <BarGraph data={currData}/>
             </div>
-          </TabPanel> */}
+          </TabPanel>
         </TabContext>
       </Box>
     </div>

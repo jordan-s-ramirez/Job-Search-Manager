@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Grid from '@mui/material/Grid';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import EditData from './EditDataBullet';
+import EditDescription from './EditDescription';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,7 +31,7 @@ export default function ComplexCard(props) {
   React.useEffect(()=>{
     setExpanded(false)
     setResize([12,6,3])
-  },[props.myCompany])
+  },[props.myCompany, props.myJobType, props.mySalary])
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -59,13 +61,13 @@ export default function ComplexCard(props) {
         />
         <CardContent style={{textAlign:'left'}}>
           <ul>
-            <li>Job Type: {props.myJobType}</li>
-            <li>Salary: {props.mySalary}</li>
-            <li>Location: {props.myLoc}</li>
-            <li>Status: {props.myStatus}</li>
-            <li>URL: 
-              <a href={props.myURL}>Visit | {props.myCompany}</a>
-            </li>
+            <EditData type="Job Type" index={props.myIndex} name={props.myJobType} title="Job Type:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
+            <EditData type="Salary" index={props.myIndex} name={props.mySalary} title="Salary:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
+            <EditData type="Location" index={props.myIndex} name={props.myLoc} title="Location:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
+            <EditData type="Application Status\r" index={props.myIndex} name={props.myStatus} title="Status:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
+            <EditData type="Job URL" index={props.myIndex} name={props.myURL} title="URL: " updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
+            {/* <a href={props.myURL}>
+            </a> */}
           </ul>  
         </CardContent>
         <CardActions disableSpacing>
@@ -83,7 +85,7 @@ export default function ComplexCard(props) {
           <CardContent style={{textAlign:'left'}}>
             <Typography variant="h6"><b>Description:</b></Typography>
             <Typography paragraph>
-              {props.myDesc}
+              <EditDescription name={props.myDesc} updateDataFunc={(e)=>props.updateDataFunc(e)}/>
             </Typography>
           </CardContent>
         </Collapse>

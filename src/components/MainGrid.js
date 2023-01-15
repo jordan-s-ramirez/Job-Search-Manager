@@ -67,6 +67,12 @@ export default function MainGrid() {
     localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
   }
 
+  const handleUpdate = (newValue, index, type) => {
+    var arr = Array.from(array)
+    arr[index][type] = newValue
+    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
+  }
+
   // Handles data remove also saves: NOTE can save if index is -1
   const handleRemoveData = (oldItemIndex) => {
     // Remove Item
@@ -110,7 +116,7 @@ export default function MainGrid() {
             {hasData ? 
             (
               <div>
-                <InfoTable data={array} remDataFunc={(e)=>handleRemoveData(e)}/>
+                <InfoTable data={array} remDataFunc={(e)=>handleRemoveData(e)} updateDataFunc={(x,y,z)=>handleUpdate(x,y,z)}/>
                 <h2>Add New Job</h2>
                 <AddData toAdd={(e) => {handleAddData(e)}}/>
               </div>

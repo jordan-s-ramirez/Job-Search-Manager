@@ -69,6 +69,8 @@ export default function DisplayData(props) {
         {currPageData.map((object, index) => {
           return(
             <ComplexCard
+              updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}
+              singleData = {object}
               key={index}
               myIndex={object.index}
               remDataFunc={(e)=>props.remDataFunc(e)}

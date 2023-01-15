@@ -5,6 +5,24 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 ChartJS.register(ArcElement, Tooltip, Legend);  
 
 export default function DoughnutGraph(props) {
+  const options = {
+    // plugins: {
+    //   title: {
+    //     display: false,
+    //     text: 'Chart.js Bar Chart - Stacked',
+    //   },
+    // },
+    responsive: true,
+    // scales: {
+    //   x: {
+    //     stacked: true,
+    //   },
+    //   y: {
+    //     stacked: true,
+    //   },
+    // },
+  };
+  
   const data = {
     labels: props.data.labels,
     datasets: [{
@@ -16,6 +34,6 @@ export default function DoughnutGraph(props) {
   };
 
   return(
-    <Doughnut data={data}/>
+    <Doughnut options={options} data={data}/>
   );
 }

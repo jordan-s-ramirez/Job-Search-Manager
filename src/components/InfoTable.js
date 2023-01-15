@@ -148,7 +148,7 @@ export default function InfoTable(props){
           </Grid>
         </Grid>
         <Grid item xs={12} s={12} md={12} style={{marginTop:"2vh"}}>
-          <DisplayData data={dataFiltered} remDataFunc={(e)=>props.remDataFunc(e)}/>
+          <DisplayData data={dataFiltered} remDataFunc={(e)=>props.remDataFunc(e)} updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
         </Grid>
       </Grid>
     </Box>

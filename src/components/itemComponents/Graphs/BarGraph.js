@@ -1,21 +1,56 @@
-import React from "react";
+import React from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 
 export default function BarGraph(props) {
+  const options = {
+    plugins: {
+      title: {
+        display: false,
+        text: 'Chart.js Bar Chart - Stacked',
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+      },
+    },
+  };
+  
+  const labels = props.data.labels;
+  
   const data = {
-    labels: props.data.labels,
-    datasets: [{
-      label: 'Bar Graph',
-      data: props.data.pieData,
-      backgroundColor: props.data.rgbData,
-      hoverOffset: 4
-    }]
+    labels,
+    datasets: [
+      {
+        label: "",
+        data: props.data.pieData,
+        backgroundColor: props.data.rgbData,
+      },
+    ],
   };
 
-  return(
-    <Bar data={data}/>
-  );
+  return <Bar options={options} data={data} />;
 }
