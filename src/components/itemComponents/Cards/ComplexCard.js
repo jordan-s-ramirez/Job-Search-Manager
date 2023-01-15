@@ -25,7 +25,7 @@ const ExpandMore = styled((props) => {
 export default function ComplexCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [resize, setResize] = React.useState([12,6,3]);
-  
+
   React.useEffect(()=>{
     setExpanded(false)
     setResize([12,6,3])
@@ -51,6 +51,11 @@ export default function ComplexCard(props) {
         <CardHeader
           title={props.myTitle}
           subheader={props.myCompany + " | " + props.myLoc}
+          action={
+            <IconButton onClick={handleDelete} aria-label="add to favorites">
+              <RemoveCircleIcon color='error'/>
+            </IconButton>
+          }
         />
         <CardContent style={{textAlign:'left'}}>
           <ul>
@@ -64,16 +69,14 @@ export default function ComplexCard(props) {
           </ul>  
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton onClick={handleDelete} aria-label="add to favorites">
-            <RemoveCircleIcon />
-          </IconButton>
+          
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
           >
-            <ExpandMoreIcon />
+            <ExpandMoreIcon color='info'/>
           </ExpandMore>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>

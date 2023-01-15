@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import DisplayData from './itemComponents/DisplayData';
+import DisplayData from './itemComponents/Cards/DisplayData';
 
 // Function gets set of items in array given name
 function getItemSet(array) {

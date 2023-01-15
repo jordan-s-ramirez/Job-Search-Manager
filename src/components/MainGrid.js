@@ -57,6 +57,8 @@ export default function MainGrid() {
   const handleAddData = (newItem) => {
     // Update Data
     var arr = Array.from(array)
+    console.log("added")
+    newItem["Timestamp"] = Date.now()
     newItem["index"] = arr.length
     arr.push(newItem)
     setArray(arr)
@@ -65,29 +67,18 @@ export default function MainGrid() {
     localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
   }
 
+  // Handles data remove also saves: NOTE can save if index is -1
   const handleRemoveData = (oldItemIndex) => {
-    // // Make sure user wants to delete this item
-    // var userResp = window.confirm("Are you use you want to remove " + array[oldItemIndex].Title + " - " + array[oldItemIndex].Company)
-    // // Remove item
-    // if(userResp) {
-    //   var arr = Array.from(array)
-    //   if (oldItemIndex > -1) {
-    //     arr.splice(oldItemIndex, 1);
-    //   }
-
-    //   setArray(arr)
-    // }
-
     // Remove Item
     var arr = Array.from(array)
     if (oldItemIndex > -1) {
       arr.splice(oldItemIndex, 1);
+      // Reorder array
+      for(var i = oldItemIndex; i < arr.length; i++) {
+        arr[i]["index"] = i
+      }
     }
-    // Reorder array
-    for(var i = oldItemIndex; i < arr.length; i++) {
-      arr[i]["index"] = i
-    }
-    console.log("remove", oldItemIndex)
+    localStorage.setItem("jobHuntData", JSON.stringify({data: arr}));
     setArray(arr)
   }
 

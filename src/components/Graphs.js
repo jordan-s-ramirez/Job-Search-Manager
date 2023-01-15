@@ -4,12 +4,12 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import DoughnutGraph from "./itemComponents/DoughnutGraph";
+import DoughnutGraph from "./itemComponents/Graphs/DoughnutGraph";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-// import BarGraph from "./itemComponents/BarGraph";
+// import BarGraph from "./itemComponents/Graphs/BarGraph";
 
 function filterData(data, type) {
   var filterData = {}
