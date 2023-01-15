@@ -10,4 +10,8 @@ One of the key features of this app is its utilization of Material-UI design pri
 * Filter data by job location and job type
 
 ## How to use
+```
+yarn add
 
+yarn start
+```
