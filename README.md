@@ -13,15 +13,15 @@ One of the key features of this app is its utilization of Material-UI design pri
 https://youtu.be/y2OJl7cszyY
 
 ## Photos
-Web App Photo Example 1
+Web App Photo Example 1: Job search table with search function
 ![Example 1](./photos/1.PNG)
-Web App Photo Example 2
+Web App Photo Example 2: Job search table with add function
 ![Example 2](./photos/2.PNG)
-Web App Photo Example 3
+Web App Photo Example 3: Graphs of data
 ![Example 3](./photos/3.PNG)
-Web App Photo Example 4
+Web App Photo Example 4: Edit description
 ![Example 4](./photos/4.PNG)
-Web App Photo Example 5
+Web App Photo Example 5: Filter in action
 ![Example 4](./photos/5.PNG)
 ## How to use
 ```
