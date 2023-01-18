@@ -4,11 +4,9 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 // Textarea for description
 
 export default function EditDescription(props) {
-  const [edit, setEdit] = React.useState(false)
   const [name, setName] = React.useState(props.name)
 
   useEffect(()=>{
-    setEdit(false)
     setName(props.name)
   },[props.name])
 
@@ -20,27 +18,17 @@ export default function EditDescription(props) {
   // when new input is updated
   const handleOnSubmit = (val) => {
     if(val.key === "Enter" || val.key === "Tab" || val.key === "Escape") {
-      setEdit(false)
       props.updateDataFunc(val, props.index, props.type)
     }
   }
 
   return(
     <div>
-      {edit ?
-        (
-          <TextareaAutosize style={{width: "100%", borderRadius: '10px'}}
-            onChange={(e)=>{handleOnClick(e)}}
-            onKeyDown={(e)=>{handleOnSubmit(e)}}
-            value={name}
-          />
-        )
-      :
-      (
-        <p onClick={()=>{setEdit(!edit)}}>
-          {name}
-        </p>
-      )}
+      <TextareaAutosize style={{width: "100%", borderRadius: '10px', borderWidth: 0, fontSize: 14, fontFamily: "Arial, sans-serif"}}
+        onChange={(e)=>{handleOnClick(e)}}
+        onKeyDown={(e)=>{handleOnSubmit(e)}}
+        value={name}
+      />
     </div>
   )
 }

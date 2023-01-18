@@ -9,6 +9,15 @@ One of the key features of this app is its utilization of Material-UI design pri
 * Save and delete entries
 * Filter data by job location and job type
 
+## Video Demo
+https://youtu.be/y2OJl7cszyY
+
+## Photos
+![Example 1](./photos/1.PNG)
+![Example 2](./photos/2.PNG)
+![Example 3](./photos/3.PNG)
+![Example 4](./photos/4.PNG)
+![Example 4](./photos/5.PNG)
 ## How to use
 ```
 yarn add

@@ -27,6 +27,7 @@ const ExpandMore = styled((props) => {
 export default function ComplexCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const [resize, setResize] = React.useState([12,6,3]);
+  const [cardColor, setCardColor] = React.useState({backgroundColor:"white"})
 
   const [description, setDescription] = React.useState(props.singleData["Job Description"])
 
@@ -38,33 +39,38 @@ export default function ComplexCard(props) {
   },[props.singleData])
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
     if(!expanded) {
       setResize([12,12,12]);
+      setExpanded(true);
     }
     else {
       setResize([12,6,3]);
+      setExpanded(false);
     }
   };
 
   const handleDelete = () => {
-    props.remDataFunc(props.myIndex)
+    // Changes color when deletes
+    setTimeout(() => {
+      props.remDataFunc(props.myIndex)
+      setCardColor({backgroundColor:"white"});
+    }, 250)
   }
 
   return (
     <Grid item xs={resize[0]} sm={resize[1]} md={resize[2]}>
-      <Card>
+      <Card style={cardColor}>
         <CardHeader
           title={props.myTitle}
           subheader={props.myCompany + " | " + props.myLoc}
           action={
-            <IconButton onClick={handleDelete} aria-label="add to favorites">
+            <IconButton onClick={()=>{setCardColor({backgroundColor:"#FFCCCB"});handleDelete()}} aria-label="add to favorites">
               <RemoveCircleIcon color='error'/>
             </IconButton>
           }
         />
         <CardContent style={{textAlign:'left'}}>
-          <ul>
+          <ul style={{fontSize:18}}>
             <EditData type="Job Type" index={props.myIndex} name={props.myJobType} title="Job Type:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
             <EditData type="Salary" index={props.myIndex} name={props.mySalary} title="Salary:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
             <EditData type="Location" index={props.myIndex} name={props.myLoc} title="Location:" updateDataFunc={(x,y,z)=>props.updateDataFunc(x,y,z)}/>
